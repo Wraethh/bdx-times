@@ -1,0 +1,12 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  --main-color-light: hsl(0, 74%, 42%);
+  --contrast-color-light: hsl(115, 92%, 67%);
+  --main-color-dark: hsl(0, 100%, 69%);
+  --contrast-color-dark: hsl(124, 47%, 7%);
+}
