@@ -4,7 +4,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 import './App.css'
 
 import Home from './pages/Home/Home'
-import ArticlesList from './pages/ArticlesList/ArticlesList'
+import Articles from './pages/Articles/Articles'
 import ArticleDetails from './pages/ArticleDetails/ArticleDetails'
 import Login from './pages/Login/Login'
 import Navbar from "./components/Navbar/Navbar"
@@ -19,7 +19,7 @@ export default function App() {
           <Navbar />
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/articles" element={<ArticlesList />} />
+            <Route path="/articles" element={<Articles />} />
             <Route path="/articles/:id" element={<ArticleDetails />} />
             <Route path="/login" element={<Login />} />
           </Routes>

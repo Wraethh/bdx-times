@@ -22,3 +22,10 @@ export type ArticleType = {
     views: number,
     userId: number
 }
+
+export type ArticlesFetchType = {
+    posts: ArticleType[],
+    total: number,
+    skip: number,
+    limit: number
+}
