@@ -8,6 +8,7 @@ import Articles from './pages/Articles/Articles'
 import ArticleDetails from './pages/ArticleDetails/ArticleDetails'
 import Login from './pages/Login/Login'
 import Navbar from "./components/Navbar/Navbar"
+import { Suspense } from "react"
 
 export default function App() {
   const queryClient = new QueryClient();
@@ -20,7 +21,11 @@ export default function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/articles" element={<Articles />} />
-            <Route path="/articles/:id" element={<ArticleDetails />} />
+            <Route path="/articles/:id" element={
+              <Suspense fallback={<p>Loading...</p>}>
+                <ArticleDetails />
+              </Suspense>
+            } />
             <Route path="/login" element={<Login />} />
           </Routes>
         </QueryClientProvider>
