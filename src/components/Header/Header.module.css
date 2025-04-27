@@ -1,0 +1,17 @@
+.header {
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    column-gap: 1rem;
+    padding-inline: 1rem;
+    margin-bottom: 1rem;
+    border-block: 1px solid var(--contrast-color);
+
+    & > a {
+        font-family: "UnifrakturMaguntia", cursive;
+        font-size: 2rem;
+        font-weight: bold;
+        margin-right: 2rem;
+    }
+}

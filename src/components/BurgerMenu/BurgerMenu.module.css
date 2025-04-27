@@ -1,0 +1,68 @@
+.burger {
+    --pp-size: 2rem;
+
+    & dialog {
+        all: unset;
+        border: none;
+        background-color: transparent;
+        filter: drop-shadow(-2px 2px 5px hsla(273, 84%, 10%, 0.25));
+        position: absolute;
+        top: -100%;
+        right: 1rem;
+        transition: top 0.5s;
+
+        &[open] {
+            top: 0;
+        }
+
+        &.closeModal {
+            top: -100%;
+        }
+
+        &::backdrop {
+            background-color: transparent;
+        }
+    }
+
+    & ul {
+        display: flex;
+        flex-direction: column;
+        align-items: end;
+        gap: 1rem;
+        background-color: hsl(0, 100%, 60%);
+        padding: 48px 1rem 4rem;
+        clip-path: polygon(0 0, 0 100%, 50% 90%, 100% 100%, 100% 0);
+
+        & li:not(:first-of-type, .logged) {
+            font-weight: bold;
+            font-size: 1.25rem;
+        }
+
+        & .logged {
+            display: grid;
+            grid-template-columns: 1fr var(--pp-size);
+            grid-template-rows: repeat(2, 1fr);
+            column-gap: 0.5rem;
+            align-items: center;
+
+            background-color: var(--contrast-color);
+            color: var(--main-color);
+            padding: 0.5rem;
+            border-radius: 2px;
+
+            & img {
+                grid-row: 1 / 3;
+                grid-column: 2 / 3;
+                width: var(--pp-size);
+            }
+
+            & p, & button {
+                text-align: end;
+            }
+        }
+    }
+
+    & .openMenu img, & .closeMenu button img {
+        width: 30px;
+    }
+}

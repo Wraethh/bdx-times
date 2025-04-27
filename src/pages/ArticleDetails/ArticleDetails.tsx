@@ -22,7 +22,6 @@ type CustomAuthorType = {
 export default function ArticleDetails() {
   const { id } = useParams();
   const { user } = useUser();
-  console.log(user)
 
   const { data: article }: { data: ArticleType } = useSuspenseQuery({ 
     queryKey: [`article${id}`], 

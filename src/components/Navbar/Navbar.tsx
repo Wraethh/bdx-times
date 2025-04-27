@@ -18,17 +18,18 @@ export default function Navbar() {
             <Link to={link.link}>{link.title}</Link>
           </li>
         ))}
-        <li>
-          { user ? (
-            <>
+
+        { user ? (
+          <li className={styles.logged}>
               <img src={user.image} alt={`profile picture of ${user.firstName} ${user.lastName}`} />
               <p>{user.firstName} {user.lastName}</p>
               <button onClick={logoutUser}>Logout</button>
-            </>
-          ) : ( 
-            <Link to="/login">Login</Link> 
-          )}
-        </li>
+          </li>
+        ) : (
+          <li>
+              <Link to="/login">Login</Link> 
+          </li>
+        )}
       </ul>
     </nav>
   )

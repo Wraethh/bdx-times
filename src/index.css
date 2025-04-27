@@ -2,11 +2,37 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  color: inherit;
+  font-family: 'Courier New', Courier, monospace;
 }
 
 body {
-  --main-color-light: hsl(0, 74%, 42%);
-  --contrast-color-light: hsl(115, 92%, 67%);
-  --main-color-dark: hsl(0, 100%, 69%);
-  --contrast-color-dark: hsl(124, 47%, 7%);
+  --main-color: hsl(27, 70%, 78%);
+  --contrast-color: hsl(273, 84%, 10%);
+  
+  background-color: var(--main-color);
+  color: var(--contrast-color);
+  padding: 1rem;
+}
+
+h1, h2 {
+  font-family: "UnifrakturMaguntia", cursive;
+  font-weight: 400;
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  text-align: start;
+  font: inherit;
+}
+
+a {
+  cursor: pointer;
+  text-decoration: none;
 }
