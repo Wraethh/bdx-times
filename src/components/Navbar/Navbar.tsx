@@ -1,20 +1,21 @@
-import { Link } from "react-router"
+import { Link, useLocation } from "react-router"
 import { useUser } from "../../contexts/User/UserContext"
 import styles from "./Navbar.module.css"
 
 export default function Navbar() {
   const { user, logoutUser } = useUser();
+  const location = useLocation().pathname.slice(1) || "home";
 
   const navLinks = [
-    {title: "Home", link: "/"}, 
-    {title: "Posts", link: "/articles"}
+    {id: "home", title: "Home", link: "/"}, 
+    {id: "articles", title: "Posts", link: "/articles"}
   ]
 
   return (
     <nav className={styles.navbar}>
       <ul>
         {navLinks.map(link => (
-          <li key={link.title}>
+          <li key={link.id} className={location === link.id ? styles.active : ""}>
             <Link to={link.link}>{link.title}</Link>
           </li>
         ))}
@@ -26,7 +27,7 @@ export default function Navbar() {
               <button onClick={logoutUser}>Logout</button>
           </li>
         ) : (
-          <li>
+          <li className={location === "login" ? styles.active : ""}>
               <Link to="/login">Login</Link> 
           </li>
         )}

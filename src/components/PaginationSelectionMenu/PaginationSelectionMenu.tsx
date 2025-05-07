@@ -8,6 +8,7 @@ type PaginationSelectionMenuPropsType = {
     disableNumBtn: (num: number) => boolean, 
     disableNextBtn: boolean, 
     paginationNumbers: number[],
+    active: number
 }
 
 export default function PaginationSelectionMenu({
@@ -17,7 +18,8 @@ export default function PaginationSelectionMenu({
     disablePrevBtn, 
     disableNumBtn, 
     disableNextBtn, 
-    paginationNumbers
+    paginationNumbers,
+    active
 }: PaginationSelectionMenuPropsType) {
     
   return (
@@ -25,7 +27,7 @@ export default function PaginationSelectionMenu({
       <button onClick={handleClickPrevBtn} disabled={disablePrevBtn} aria-label="previous">{"<"}</button>
       <ul className={styles.numberList}>
           {paginationNumbers.map((num: number) => (
-            <li key={num}>
+            <li key={num} className={active === num+1 ? styles.active : ""}>
               <button onClick={() => handleClickNumBtn(num)} disabled={disableNumBtn(num)}>
                 {num + 1}
               </button>

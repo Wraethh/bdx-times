@@ -45,6 +45,7 @@ export default function ArticlesPagination() {
         disableNumBtn={disableNumBtn} 
         disableNextBtn={disableNextBtn} 
         paginationNumbers={paginationNumbers}
+        active={(skip / 10) + 1}
       />
     </>
   )
