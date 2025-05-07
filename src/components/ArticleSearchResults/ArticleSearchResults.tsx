@@ -14,6 +14,9 @@ export default function ArticleSearchResults({ searchTerm }: {searchTerm: string
   )
 
   return (
-    <ArticlesList articles={articles.posts} />
+    <>
+      <p>Results: {articles.total}</p>
+      <ArticlesList articles={articles.posts} />
+    </>
   )
 }

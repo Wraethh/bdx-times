@@ -14,17 +14,20 @@ export default function Home() {
   }
 
   return (
-    <div className={styles.home}>
+    <>
       <h1>Home</h1>
-      <form onSubmit={saveSearchTerm}>
-        <input type="text" name="searchbar" aria-label="searchbar" />
-        <button>Search</button>
+      <form onSubmit={saveSearchTerm} className={styles.articleSearchForm}>
+        <label htmlFor="searchbar">Search for an article :</label>
+        <div>
+          <input type="text" name="searchbar" id="searchbar" aria-label="searchbar" />
+          <button>Search</button>
+        </div>
       </form>
       {searchTerm && (
         <Suspense fallback={<p>Loading...</p>}>
           <ArticleSearchResults searchTerm={searchTerm} />
         </Suspense>
       )}
-    </div>
+    </>
   )
 }

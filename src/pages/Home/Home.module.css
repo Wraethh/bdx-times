@@ -1,0 +1,22 @@
+.articleSearchForm {
+    margin-block: 2rem;
+
+    & > div {
+        margin-top: 1rem;
+        display: flex;
+        gap: 1rem;
+
+        & input {
+            padding-inline: 0.5rem;
+        }
+
+        & button {
+            background-color: var(--contrast-color);
+            color: var(--main-color);
+            font-weight: bold;
+            padding: 0.5rem 1rem;
+            border-radius: 2px;
+        }
+    }
+
+}
