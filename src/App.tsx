@@ -18,16 +18,18 @@ export default function App() {
       <UserProvider>
         <QueryClientProvider client={queryClient}>
           <Header />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/articles" element={<Articles />} />
-            <Route path="/articles/:id" element={
-              <Suspense fallback={<p>Loading...</p>}>
-                <ArticleDetails />
-              </Suspense>
-            } />
-            <Route path="/login" element={<Login />} />
-          </Routes>
+          <main>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/articles" element={<Articles />} />
+              <Route path="/articles/:id" element={
+                <Suspense fallback={<p>Loading...</p>}>
+                  <ArticleDetails />
+                </Suspense>
+              } />
+              <Route path="/login" element={<Login />} />
+            </Routes>
+            </main>
         </QueryClientProvider>
       </UserProvider>
     </BrowserRouter>

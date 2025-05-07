@@ -15,6 +15,10 @@ body {
   padding: 1rem;
 }
 
+main {
+  padding: 1rem;
+}
+
 h1, h2 {
   font-family: "UnifrakturMaguntia", cursive;
   font-weight: 400;
@@ -30,6 +34,10 @@ button {
   background-color: transparent;
   text-align: start;
   font: inherit;
+
+  &:disabled {
+    cursor: auto;
+  }
 }
 
 a {

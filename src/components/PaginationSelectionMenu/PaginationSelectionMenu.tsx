@@ -1,3 +1,5 @@
+import styles from "./PaginationSelectionMenu.module.css";
+
 type PaginationSelectionMenuPropsType = {
     handleClickPrevBtn: () => void, 
     handleClickNumBtn: (num: number) => void,
@@ -19,20 +21,18 @@ export default function PaginationSelectionMenu({
 }: PaginationSelectionMenuPropsType) {
     
   return (
-    <ul>
-        <li>
-          <button onClick={handleClickPrevBtn} disabled={disablePrevBtn} aria-label="previous">{"<"}</button>
-        </li>
-        {paginationNumbers.map((num: number) => (
-          <li key={num}>
-            <button onClick={() => handleClickNumBtn(num)} disabled={disableNumBtn(num)}>
-              {num + 1}
-            </button>
-          </li>
-        ))}
-        <li>
-          <button onClick={handleClickNextBtn} disabled={disableNextBtn} aria-label="next">{">"}</button>
-        </li>
-    </ul>
+    <div className={styles.paginationMenu}>
+      <button onClick={handleClickPrevBtn} disabled={disablePrevBtn} aria-label="previous">{"<"}</button>
+      <ul className={styles.numberList}>
+          {paginationNumbers.map((num: number) => (
+            <li key={num}>
+              <button onClick={() => handleClickNumBtn(num)} disabled={disableNumBtn(num)}>
+                {num + 1}
+              </button>
+            </li>
+          ))}
+      </ul>
+      <button onClick={handleClickNextBtn} disabled={disableNextBtn} aria-label="next">{">"}</button>
+    </div>
   )
 }
