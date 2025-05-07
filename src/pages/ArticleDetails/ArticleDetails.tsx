@@ -40,30 +40,37 @@ export default function ArticleDetails() {
 
   return (
     <>
-      <h1>{article.title}</h1>
-      <p>
-        Written by 
-        <span>
-          <img src={author.image} alt={`profile picture of ${author.firstName} ${author.lastName}`} /> 
-          {author.firstName} {author.lastName}
-        </span>
-      </p>
-      <p>{article.body}</p>
-      <ul>
-        <li>{article.views}</li>
-        <li>{article.reactions.likes}</li>
-        <li>{article.reactions.dislikes}</li>
-      </ul>
-      <h2>Comments ({comments.total})</h2>
-      <ul>
-        {comments.comments.map((com: CommentType) => (
-          <li key={com.id}>
-            <p>{com.body}</p>
-            <p className={user?.id === com.user.id ? styles.author : undefined}>{com.user.fullName}</p>
-            <p>{com.likes}</p>
-          </li>
-        ))}
-      </ul>
+      <article className={styles.article}>
+        <h1>{article.title}</h1>
+        <p className={styles.author}>
+          Written by 
+          <span>
+            <img src={author.image} alt={`profile picture of ${author.firstName} ${author.lastName}`} /> 
+            {author.firstName} {author.lastName}
+          </span>
+        </p>
+        <p>{article.body}</p>
+        <ul className={styles.otherInfos}>
+          <li>{article.views} views</li>
+          <li>{article.reactions.likes} likes</li>
+          <li>{article.reactions.dislikes} dislikes</li>
+        </ul>
+      </article>
+
+      <div className={styles.comments}>
+        <h2>Comments ({comments.total})</h2>
+        <ul>
+          {comments.comments.map((com: CommentType) => (
+            <li key={com.id}>
+              <p>« {com.body} »</p>
+              <div>
+                <p className={user?.id === com.user.id ? styles.connectedUser : undefined}>{com.user.fullName}</p>
+                <p>{com.likes} likes</p>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
     </>
   )
 }

@@ -1,3 +1,66 @@
-.author {
+.connectedUser {
     font-weight: bold;
+}
+
+.article {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 3rem;
+
+    & .author {
+        display: flex;
+        
+        & span {
+            display: flex;
+
+            & img {
+                width: 20px;
+                background-color: var(--contrast-color);
+                border-radius: 2px;
+                margin-inline: 0.5rem;
+            }
+        }
+    } 
+
+    & .otherInfos {
+        display: flex;
+
+        & li {
+            font-style: italic;
+
+            &:not(:first-of-type) {
+                border-left: 1px solid var(--contrast-color);
+                padding-left: 1rem;
+                margin-left: 1rem;
+            }
+        }
+    }
+}
+
+.comments {
+
+    & ul {
+        margin-top: 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+
+        & li {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+
+            & div {
+                display: flex;
+                font-style: italic;
+    
+                & p:not(:first-of-type) {
+                    border-left: 1px solid var(--contrast-color);
+                    padding-left: 1rem;
+                    margin-left: 1rem;
+                }
+            }
+        }
+    }
 }
