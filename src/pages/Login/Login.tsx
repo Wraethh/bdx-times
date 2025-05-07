@@ -14,11 +14,15 @@ export default function Login() {
       username: { value: string };
       password: { value: string };
     };
+
     try {
       await loginUser?.(target.username.value, target.password.value);
     } catch (error) {
       setLoginError(error as Error)
     }
+
+    target.username.value = ""
+    target.password.value = ""
   }
 
   useEffect(() => {
@@ -26,11 +30,9 @@ export default function Login() {
   }, [user, navigate])
 
   return (
-    <div className={styles.login}>
-      { loginError ? (
-        <p>Failed to login, your username or password is incorrect</p>
-        ) : null }
-      <form onSubmit={tryToLogin}>
+    <>
+      <h1>Login</h1>
+      <form onSubmit={tryToLogin} className={styles.loginForm}>
         <label htmlFor="username">
           Username
           <input type="text" id="username" name="username" />
@@ -39,8 +41,11 @@ export default function Login() {
           Password
           <input type="password" id="password" name="password" />
         </label>
-        <button>Submit</button>
+        { loginError ? (
+          <p>Failed to login, your username or password is incorrect</p>
+          ) : null }
+        <button>Login</button>
       </form>
-    </div>
+    </>
   )
 }

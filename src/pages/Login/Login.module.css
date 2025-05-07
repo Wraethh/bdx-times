@@ -1,0 +1,34 @@
+.loginForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 2rem;
+    margin-inline: auto;
+
+    & label {
+        width: inherit;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        font-weight: bold;
+
+        & input {
+            padding: 0.5rem;
+            width: calc(100svw - 3rem);
+            max-width: 300px;
+        }
+    }
+
+    & p {
+        max-width: 300px;
+    }
+
+    & button {
+        background-color: var(--contrast-color);
+        color: var(--main-color);
+        font-weight: bold;
+        padding: 0.5rem 1rem;
+        border-radius: 2px;
+    }
+}
