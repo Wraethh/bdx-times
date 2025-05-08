@@ -24,7 +24,7 @@ export default function Home() {
         </div>
       </form>
       {searchTerm && (
-        <Suspense fallback={<p>Loading...</p>}>
+        <Suspense fallback={<p>Looking for matching articles...</p>}>
           <ArticleSearchResults searchTerm={searchTerm} />
         </Suspense>
       )}

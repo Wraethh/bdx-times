@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { dummyFetch } from "../../services/utils";
-import { ArticlesFetchType } from "../../services/types";
+import { ArticlesFetchType, FetchError } from "../../services/types";
 
 import ArticlesList from "../ArticlesList/ArticlesList";
 import PaginationSelectionMenu from "../PaginationSelectionMenu/PaginationSelectionMenu";
@@ -11,7 +11,7 @@ export default function ArticlesPagination() {
   const [skip, setSkip] = useState<number>(0);
   const limit = 10;
 
-  const { data: articles }: { data: ArticlesFetchType} = useSuspenseQuery({ 
+  const { data: articles, error }: { data: ArticlesFetchType, error: FetchError | null } = useSuspenseQuery({ 
     queryKey: ['articles', skip], 
     queryFn: () => dummyFetch(`https://dummyjson.com/posts?limit=${limit}&skip=${skip}&sortBy=views&order=desc`),
   })
@@ -33,6 +33,12 @@ export default function ArticlesPagination() {
   const disablePrevBtn = skip <= 0;
   const disableNextBtn = skip + limit >= articles.total;
   const disableNumBtn = (num: number): boolean => skip / limit === num
+
+  if (error) {
+    return (
+      <p>An error occured, try refreshing the page</p>
+    )
+  }
 
   return (
     <>

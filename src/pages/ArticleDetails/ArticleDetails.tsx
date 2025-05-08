@@ -1,7 +1,7 @@
 import { useParams } from "react-router"
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { dummyFetch } from "../../services/utils";
-import { ArticleType, CommentType } from "../../services/types";
+import { ArticleType, CommentType, FetchError } from "../../services/types";
 import { useUser } from "../../contexts/User/UserContext";
 import styles from "./ArticleDetails.module.css"
 
@@ -23,20 +23,26 @@ export default function ArticleDetails() {
   const { id } = useParams();
   const { user } = useUser();
 
-  const { data: article }: { data: ArticleType } = useSuspenseQuery({ 
+  const { data: article, error: articleError }: { data: ArticleType, error: FetchError | null } = useSuspenseQuery({ 
     queryKey: [`article${id}`], 
     queryFn: () => dummyFetch(`https://dummyjson.com/posts/${id}`),
   })
   
-  const { data: comments }: { data: CommentsFetchType } = useSuspenseQuery({ 
+  const { data: comments, error: commentsError }: { data: CommentsFetchType, error: FetchError | null } = useSuspenseQuery({ 
     queryKey: [`comments${id}`], 
     queryFn: () => dummyFetch(`https://dummyjson.com/posts/${id}/comments`),
   })
 
-  const { data: author }: { data: CustomAuthorType } = useSuspenseQuery({ 
+  const { data: author, error: authorError }: { data: CustomAuthorType, error: FetchError | null } = useSuspenseQuery({ 
     queryKey: [`author${id}`], 
     queryFn: () => dummyFetch(`https://dummyjson.com/users/${article.userId}?select=firstName,lastName,image`),
   })
+
+  if (articleError || commentsError || authorError) {
+    return (
+      <p>An error occured, try refreshing the page</p>
+    )
+  }
 
   return (
     <>

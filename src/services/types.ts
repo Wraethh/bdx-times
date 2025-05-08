@@ -41,3 +41,9 @@ export type CommentType = {
         fullName: string
     }
 }
+
+export type FetchError = {
+    name: string,
+    message: string,
+    stack?: string
+}
